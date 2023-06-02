@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>WASM Test</title>
+    <script type="text/javascript" src="./lib.js"></script>
+    <script type="text/javascript">
+        Module['onRuntimeInitialized'] = function() {
+            console.log("wasm loaded ");
+            var app = new Module.Application(12);
+            console.log(`Accessing by getter: value = ${app.value}`);
+            app.value = 25;
+            console.log(`After value set: value = ${app.value}`);
+            console.log(`Printing value by print function: `);
+            app.printValue();
+            console.log(`Printing message: `);
+            app.print("Hi WASM!")
+        }
+    </script>
+</head>
+<body>
+Check browser console.
+</body>
+</html>
